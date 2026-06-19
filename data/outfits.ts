@@ -16,7 +16,8 @@ export const OUTFITS = [
       accessory: "/accessories/coder-accessories.png",
       paragraphs: [
         "In college, I had two internships that really encompassed the full tech stack. First I worked with UPS as a Grafana Dashboard builder, carving out SQL connections in the backend to be cleanly visualized in Grafana. Then I worked as a front-end intern with the New Jersey Department of Health, using React to create maps and 3D renderings for a mobile app to assist medical practitioners work in emergency situations.",
-        "After my 9-to-5, I like to keep my coding skills sharp. Between the LeetCode session, I've been working on Webdev projects... like this website! ",      ]
+        "After my 9-to-5, I like to keep my coding skills sharp. Between the LeetCode session, I've been working on Webdev projects... like this website! ",
+    ]
     },
     { 
       id: "tpm", 
@@ -54,9 +55,9 @@ export const OUTFITS = [
       src: "/outfits/creative-outfit.png", 
       accessory: "/accessories/creative-accessories.png",
       paragraphs: [
-        "Paragraph 1: something something something something.",
-        "Paragraph 1: something something something something.",
-        "Paragraph 1: something something something something."
+        "In every one of my projects, whether it be working a database connection in college, or managing work across multiple teams in my career, I gotta put a little whimsy in everything I do! I’ve been going to therapy consistently for a year now, and I got diagnosed with PDD (persistent depression disorder). I’ve found that the best way to combat this is to engage in imagination, creativity, and go out there and TRY NEW STUFF!",
+        "I really just be doing a million little side quests and learning more about the world! I’ve learned how to twist balloon animals and do card magic tricks! I’ve got over 10k trophies in Clash Royale. I’ve made a children's book! I love to bake interesting pastries and to host parties for my friends at my little apartment. There’s so much connection and world to embrace, and I try to sprinkle this passion in everything I do.",
+        "But really, I just wanted to draw myself as a princess LOL"
       ]
     },
   ]

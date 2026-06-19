@@ -4,6 +4,14 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { OUTFITS } from "../data/outfits";
 
+type Outfit = {
+  id: string;
+  label: string;
+  src: string;
+  accessory: string;
+  paragraphs: string[];
+};
+
 export default function Home() {
   const [currentOutfit, setCurrentOutfit] = useState<Outfit | null>(null);
   const avatarRef = useRef<HTMLDivElement | null>(null);
@@ -17,7 +25,7 @@ export default function Home() {
   const playPopSound = () => {
     if (popAudioRef.current) {
       const soundClone = popAudioRef.current.cloneNode(true) as HTMLAudioElement;
-      soundClone.volume = 0.4; // Keep it subtle and pleasant, not blastingly loud
+      soundClone.volume = 0.4; 
       soundClone.play().catch((err) => {
         console.log("Audio playback interaction prevented:", err);
       });
@@ -52,7 +60,7 @@ export default function Home() {
   };
 
   // Fires when dragging from the AVATAR back to the RACK (or anywhere outside)
-  const handleAvatarDragEnd = (event, info) => {
+  const handleAvatarDragEnd = (event: any , info: any) => {
     if (!avatarRef.current) return;
 
     const avatarRect = avatarRef.current.getBoundingClientRect();
@@ -226,7 +234,7 @@ export default function Home() {
         </section>
       </div>
 
-      <footer className="text-center text-xs text-slate-400 mt-8">
+      <footer className="text-center text-xs text-slate-800 mt-8">
         Built with Next.js & Tailwind CSS by me YIPPEE!
       </footer>
 
