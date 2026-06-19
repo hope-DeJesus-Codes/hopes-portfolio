@@ -120,7 +120,7 @@ export default function Home() {
                     key={outfit.id} 
                     className="flex flex-col items-center group relative select-none"
                     style={{
-                      marginLeft: index === 0 ? "0px" : "-55px", 
+                      marginLeft: index === 0 ? "0px" : "-69px", 
                       zIndex: isBeingWorn ? 0 : 20 + index 
                     }}
                   >
@@ -135,12 +135,12 @@ export default function Home() {
                         isBeingWorn ? "opacity-10 pointer-events-none" : "opacity-100"
                       }`}
                     >
-                      <div className="-mt-37 w-full h-full scale-140 origin-top pointer-events-none"> 
+                      <div className="-mt-34 w-full h-full relative scale-140 origin-top pointer-events-none"> 
                         <Image 
                           src={outfit.src} 
                           alt={outfit.label}
-                          width={160}
-                          height={256}
+                          fill
+                          sizes="160px"
                           className="object-contain"
                         />
                       </div>
