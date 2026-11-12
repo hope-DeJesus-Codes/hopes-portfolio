@@ -16,7 +16,7 @@ export const OUTFITS = [
       accessory: "/accessories/coder-accessories.png",
       paragraphs: [
         "In college, I had two internships that really encompassed the full tech stack. First I worked with UPS as a Grafana Dashboard builder, carving out SQL connections in the backend to be cleanly visualized in Grafana. Then I worked as a front-end intern with the New Jersey Department of Health, using React to create maps and 3D renderings for a mobile app to assist medical practitioners work in emergency situations.",
-        "After my 9-to-5, I like to keep my coding skills sharp. Between the occasional LeetCode session, I've been working on Webdev projects and have been the web dev for a small business travel agency: argoadventures.com.",
+        "After my 9-to-5, I like to keep my coding skills sharp. Between the occasional LeetCode session, I've been working on Webdev projects and have been the web dev for a small business travel agency: argoadventuretours.com",
     ]
     },
     { 
