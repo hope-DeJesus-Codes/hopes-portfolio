@@ -18,6 +18,9 @@ export default function Home() {
   const [currentOutfit, setCurrentOutfit] = useState<Outfit | null>(null);
   const avatarRef = useRef<HTMLDivElement | null>(null);
   const popAudioRef = useRef<HTMLAudioElement | null>(null);
+  // Framer Motion fires onTap after a drag too (the pointer is still over the
+  // element on release), so track drags to keep taps from double-firing.
+  const didDragRef = useRef(false);
 
   useEffect(() => {
     popAudioRef.current = new Audio("/sounds/pop.mp3");
@@ -50,17 +53,31 @@ export default function Home() {
     setCurrentOutfit(outfit);
   };
 
+  const handleDragStart = () => {
+    didDragRef.current = true;
+  };
+
+  // Clear the flag on the next tick, after any onTap from the same release
+  // has had a chance to see it.
+  const clearDragFlag = () => {
+    setTimeout(() => {
+      didDragRef.current = false;
+    }, 0);
+  };
+
   // Drag from the RACK to the AVATAR
   const handleDragEnd = (
     _: unknown,
     info: { point: Point },
     outfit: Outfit
   ) => {
+    clearDragFlag();
     if (isOverAvatar(info.point)) equip(outfit);
   };
 
   // Drag from the AVATAR back to the RACK (or anywhere outside the avatar)
   const handleAvatarDragEnd = (_: unknown, info: { point: Point }) => {
+    clearDragFlag();
     if (!isOverAvatar(info.point)) setCurrentOutfit(null);
   };
 
@@ -124,7 +141,10 @@ export default function Home() {
                     <motion.div
                       drag
                       dragSnapToOrigin
-                      onTap={() => equip(outfit)}
+                      onTap={() => {
+                        if (!didDragRef.current) equip(outfit);
+                      }}
+                      onDragStart={handleDragStart}
                       onDragEnd={(e, info) => handleDragEnd(e, info, outfit)}
                       whileDrag={{ scale: 1.05, zIndex: 100, cursor: "grabbing" }}
                       className={`w-24 h-40 sm:w-32 sm:h-52 lg:w-28 lg:h-44 xl:w-32 xl:h-52 2xl:w-40 2xl:h-64 overflow-visible relative cursor-grab bg-transparent active:cursor-grabbing rounded-xl transition-opacity duration-300 touch-none ${
@@ -191,7 +211,10 @@ export default function Home() {
               <motion.div
                 drag
                 dragSnapToOrigin
-                onTap={() => setCurrentOutfit(null)}
+                onTap={() => {
+                  if (!didDragRef.current) setCurrentOutfit(null);
+                }}
+                onDragStart={handleDragStart}
                 onDragEnd={handleAvatarDragEnd}
                 whileDrag={{ scale: 1.05, cursor: "grabbing" }}
                 initial={{ opacity: 0, scale: 0.95 }}
